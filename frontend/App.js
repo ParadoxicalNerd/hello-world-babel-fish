@@ -37,7 +37,7 @@ const App = () => {
           justifyContent: 'flex-start'
         }}
         dropDownStyle={{ backgroundColor: '#fafafa' }}
-        onChangeItem={item => setLanguage(item)}
+        onChangeItem={item => setLanguage(item.value)}
       />
     </View>
   );
