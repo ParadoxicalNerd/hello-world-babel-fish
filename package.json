@@ -1,0 +1,24 @@
+{
+  "name": "hello-world-babel-fish",
+  "version": "1.0.0",
+  "description": "A speech-to-text program that converts English into a language of the user's choosing.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParadoxicalNerd/hello-world-babel-fish.git"
+  },
+  "keywords": [
+    "translator",
+    "english",
+    "languages"
+  ],
+  "author": ["Arnob Kazi", ""],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ParadoxicalNerd/hello-world-babel-fish/issues"
+  },
+  "homepage": "https://github.com/ParadoxicalNerd/hello-world-babel-fish#readme"
+}
