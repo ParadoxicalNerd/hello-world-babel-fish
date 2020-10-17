@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
   let uri = lang+'?text='+text;
   let response = request("https://api.funtranslations.com/translate/" + uri, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    res.json(JSON.parse(body));
+    res.send(JSON.parse(body));
     }
   })
 })
