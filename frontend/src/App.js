@@ -78,10 +78,9 @@ const App = () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1>The Babel Fish 🐠🐠</h1>
+            <h1>The Babel Fish 🐠</h1>
             <form>
-                <h2>Input text you want to translate:{'  '}</h2>
-                <textarea value={input} placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
+                <textarea value={input} placeholder="Input text you want to translate" onChange={e => setInput(e.target.value)} />
                 <button type="button" id="transcribe" onClick={e => transcribe()} ><FaMicrophone /> </button>
             </form>
             <span>

@@ -53,6 +53,7 @@ form textarea{
   height: 250px;
   width: 250px;
   padding:10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #transcribe{
