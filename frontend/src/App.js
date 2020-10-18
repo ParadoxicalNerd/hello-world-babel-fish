@@ -1,6 +1,8 @@
 import * as Speech from "microsoft-cognitiveservices-speech-sdk";
 import React, { useRef, useState } from 'react'
 import './style.css';
+import { FaMicrophone } from 'react-icons/fa'
+import { GiSpeaker } from 'react-icons/gi'
 
 const App = () => {
     let [input, setInput] = useState('');
@@ -72,12 +74,11 @@ const App = () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1>The Babel Fish</h1>
+            <h1>The Babel Fish 🐠🐠</h1>
             <form>
-                <label>
-                    Input text you want to translate:{'  '}
-                    <textarea value={input} placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
-                </label>
+                <h2>Input text you want to translate:{'  '}</h2>
+                <textarea value={input} placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
+                <button type="button" id="transcribe" onClick={e => transcribe()} ><FaMicrophone /> </button>
             </form>
             <span>
                 Select a voice/language:{'  '}
@@ -87,14 +88,14 @@ const App = () => {
                     <option value="gungan">Gungam</option>
                 </select>
             </span>
-            <button onClick={e => transcribe()} >Click to transcribe</button>
+
 
             <button onClick={e => translator()}>Click to translate</button>
 
             <h2>Translated Text</h2>
             <p>{translated}</p>
 
-            {(translated != '') && <button onClick={e => playback()} >Click for playback</button>}
+            {(translated != '') && <button id='speaker' onClick={e => playback()} ><GiSpeaker /></button>}
 
         </div>
     );
