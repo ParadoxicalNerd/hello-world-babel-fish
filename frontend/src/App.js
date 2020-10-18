@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import './style.css';
 
 const App = () => {
-    let [input, setInput] = useState('Enter text to translate');
+    let [input, setInput] = useState('');
     let [translated, setTranslated] = useState('');
     let [language, setLanguage] = useState('yoda')
 
@@ -36,18 +36,18 @@ const App = () => {
     }
 
     const translator = () => {
-        return fetch(`https://localhost:3000/translation?lang=${language}&text=${input}`)
+        fetch(`http://localhost:3000/translation?lang=${language}&text=${input}`)
             .then(val => val.json())
             .then(val => setTranslated(val.contents.translated))
     }
-    
+
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
             <h1>The Babel Fish</h1>
             <form>
                 <label>
                     Input text you want to translate:{'  '}
-                    <input value={input} onChange={e => setInput(e.target.value)} />
+                    <input value={input}  placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
                 </label>
             </form>
             <span>

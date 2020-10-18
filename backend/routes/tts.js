@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
  })
 
  router.get('/returnfile', cors(), (req, res) => {
+     res.contentType('audio/wav')
      res.sendFile(path.join(__dirname, "../audio/audioFile.wav"))
  })
 
