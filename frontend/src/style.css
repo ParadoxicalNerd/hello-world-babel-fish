@@ -4,12 +4,23 @@ body {
   padding-left: 50px;
   font-family: Arial;
   text-align: center;
+  background-image: url("babelfish.jpg");
+}
+div.transbox {
+  background-color: #ffffff;
+  border: 10px solid black;
+  opacity: 0.6;
+}
+
+img {
+  align-self: right;
 }
 
 h1 {
   color: white;
   text-align: left;
   font-size: 60px;
+  opacity: 1;
 }
 
 h2 {
@@ -18,7 +29,7 @@ h2 {
 }
 
 p {
-  font-family: verdana;
+  font-family: Arial;
   font-size: 20px;
 }
 
