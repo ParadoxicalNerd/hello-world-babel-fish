@@ -3,7 +3,7 @@ var router = express.Router();
 const https = require('https');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const path = require('path');
-
+const cors = require('cors');
 
 async function synthesizeSpeech(input) {
     const speechConfig = sdk.SpeechConfig.fromSubscription("f34cc604a9614af5892dfe09d5085c50", "eastus");
@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
      synthesizeSpeech(userIn)
  })
 
- router.get('/returnfile', (req, res) => {
+ router.get('/returnfile', cors(), (req, res) => {
      res.sendFile(path.join(__dirname, "../audio/audioFile.wav"))
  })
 
