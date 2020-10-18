@@ -1,31 +1,36 @@
 {
-  "name": "frontend",
-  "version": "0.0.1",
+  "name": "a",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
-  },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.3",
-    "react-native-dropdown-picker": "^3.7.0",
-    "react-native-vector-icons": "^7.1.0"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "microsoft-cognitiveservices-speech-sdk": "^1.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "3.4.3"
   },
-  "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/runtime": "^7.12.1",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^26.5.2",
-    "eslint": "^7.11.0",
-    "jest": "^26.5.3",
-    "metro-react-native-babel-preset": "^0.63.0",
-    "react-test-renderer": "16.13.1"
+  "scripts": {
+    "start": "PORT=3006 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "jest": {
-    "preset": "react-native"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:3000"
 }
