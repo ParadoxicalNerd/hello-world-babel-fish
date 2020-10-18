@@ -45,9 +45,7 @@ const App = () => {
 
         const synthesizer = new Speech.SpeechSynthesizer(speechConfig, audioConfig);
 
-        let speaker = language == "sindarin" ? "en-UK-LibbyNeural"
-            : language == "quenya" ? "ru-RU-DariyaNeural"
-                : language == "gungan" ? "en-CA-ClaraNeural" : "fr-FR-DeniseNeural"
+        let speaker = "en-UK-LibbyNeural"
 
         const translation_file = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
                                     <voice name="${speaker}">
