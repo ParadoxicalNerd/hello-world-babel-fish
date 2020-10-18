@@ -1,5 +1,6 @@
 import * as Speech from "microsoft-cognitiveservices-speech-sdk";
 import React, { useState } from 'react'
+import './style.css';
 
 const App = () => {
     let [input, setInput] = useState('Enter text to translate');
@@ -39,22 +40,29 @@ const App = () => {
             .then(val => val.json())
             .then(val => setTranslated(val.contents.translated))
     }
-
+    
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1>Input text you want to translate</h1>
-            <textarea value={input} onChange={e => setInput(e.target.value)} />
-            <select value={language} onChange={e => setLanguage(e.target.value)}>
-                <option value="yoda">Yoda</option>
-                <option value="sith">Sith</option>
-                <option value="gungan">Gungam</option>
-            </select>
-
+            <h1>The Babel Fish</h1>
+            <form>
+                <label>
+                    Input text you want to translate:{'  '}
+                    <input value={input} onChange={e => setInput(e.target.value)} />
+                </label>
+            </form>
+            <span>
+                Select a voice/language:{'  '}
+                <select value={language} onChange={e => setLanguage(e.target.value)}>
+                    <option value="yoda">Yoda</option>
+                    <option value="sith">Sith</option>
+                    <option value="gungan">Gungam</option>
+                </select>
+            </span>
             <button onClick={e => transcribe()} >Click me to transcribe</button>
 
             <button onClick={e => translator()}>Click to translate</button>
 
-            <h1>Translated Text</h1>
+            <h2>Translated Text</h2>
             <p>{translated}</p>
         </div>
     );
