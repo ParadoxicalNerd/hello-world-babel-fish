@@ -1,11 +1,13 @@
 import * as Speech from "microsoft-cognitiveservices-speech-sdk";
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './style.css';
 
 const App = () => {
     let [input, setInput] = useState('');
     let [translated, setTranslated] = useState('');
     let [language, setLanguage] = useState('yoda')
+    let player = useRef(null)
+    let [canPlay, setCanPlay] = useState(false)
 
     const transcribe = () => {
         const speechConfig = Speech.SpeechConfig.fromSubscription("f34cc604a9614af5892dfe09d5085c50", "eastus");
@@ -35,6 +37,33 @@ const App = () => {
 
     }
 
+    const playback = () => {
+        const speechConfig = Speech.SpeechConfig.fromSubscription("f34cc604a9614af5892dfe09d5085c50", "eastus");
+        const audioConfig = Speech.AudioConfig.fromDefaultSpeakerOutput();
+
+        const synthesizer = new Speech.SpeechSynthesizer(speechConfig, audioConfig);
+
+        const translation_file = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+                                    <voice name="en-US-AriaNeural">
+                                        ${translated}
+                                    </voice>
+                                  </speak>`
+
+
+        synthesizer.speakSsmlAsync(
+            translation_file,
+            result => {
+                if (result) {
+                    console.log(JSON.stringify(result));
+                }
+                synthesizer.close();
+            },
+            error => {
+                console.log(error);
+                synthesizer.close();
+            });
+    }
+
     const translator = () => {
         fetch(`http://localhost:3000/translation?lang=${language}&text=${input}`)
             .then(val => val.json())
@@ -47,7 +76,7 @@ const App = () => {
             <form>
                 <label>
                     Input text you want to translate:{'  '}
-                    <input value={input}  placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
+                    <textarea value={input} placeholder="enter your text here" onChange={e => setInput(e.target.value)} />
                 </label>
             </form>
             <span>
@@ -58,12 +87,15 @@ const App = () => {
                     <option value="gungan">Gungam</option>
                 </select>
             </span>
-            <button onClick={e => transcribe()} >Click me to transcribe</button>
+            <button onClick={e => transcribe()} >Click to transcribe</button>
 
             <button onClick={e => translator()}>Click to translate</button>
 
             <h2>Translated Text</h2>
             <p>{translated}</p>
+
+            {(translated != '') && <button onClick={e => playback()} >Click for playback</button>}
+
         </div>
     );
 }
