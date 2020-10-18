@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var tts = require('./routes/tts');
 const translation = require('./routes/translation');
+const indexRouter = require('./routes/index')
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/translation', translation);
 app.use('/tts', tts)
+app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
